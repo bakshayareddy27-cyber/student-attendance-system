@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faculty | Rollcall</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%2310231f'/%3E%3Cpath d='M8 7v20M14 7v20M20 7v20M26 7v20' stroke='%23f2c230' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/vendor/fonts/bricolage/index.css">
+  <link rel="stylesheet" href="/vendor/fonts/figtree/index.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body data-page="faculty" data-roles="admin">
+<div id="shell"></div>
+<main id="page" class="page" hidden>
+  <div class="page-head">
+    <div><h1 class="page-title">Faculty</h1><p class="page-sub">Create faculty accounts and choose which classes each can mark.</p></div>
+    <button class="btn btn-chalk" id="addBtn"><i class="bi bi-plus-lg me-2"></i>Add faculty</button>
+  </div>
+  <div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Name</th><th>Email</th><th>Classes</th><th class="text-end">Actions</th></tr></thead><tbody id="body"></tbody></table></div></div>
+</main>
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><form class="modal-content" id="form" novalidate>
+  <div class="modal-header"><h2 class="modal-title h5" id="formTitle">Add faculty</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body"><div class="row g-3">
+    <div class="col-12"><label class="form-label" for="f-name">Full name</label><input class="form-control" id="f-name" name="name" required></div>
+    <div class="col-12"><label class="form-label" for="f-email">Email</label><input class="form-control" type="email" id="f-email" name="email" required></div>
+    <div class="col-12"><label class="form-label" for="f-password">Password</label><input class="form-control" type="password" id="f-password" name="password" autocomplete="new-password"><div class="form-text" id="pwHelp">At least 8 characters.</div></div>
+    <div class="col-12"><div class="form-label">Classes they can mark</div><div id="classBoxes" class="d-flex flex-column gap-2"></div></div>
+  </div></div>
+  <div class="modal-footer"><button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="submit" id="saveBtn">Save faculty</button></div>
+</form></div></div>
+<div class="modal fade" id="delModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+  <div class="modal-header"><h2 class="modal-title h5">Delete faculty account?</h2><button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body" id="delText"></div>
+  <div class="modal-footer"><button class="btn btn-ghost" data-bs-dismiss="modal">Keep account</button><button class="btn btn-danger" id="delBtn">Delete account</button></div></div></div></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/shell.js"></script>
+<script src="/js/faculty.js"></script>
+</body>
+</html>

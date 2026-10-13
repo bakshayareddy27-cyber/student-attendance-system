@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reports | Rollcall</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%2310231f'/%3E%3Cpath d='M8 7v20M14 7v20M20 7v20M26 7v20' stroke='%23f2c230' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/vendor/fonts/bricolage/index.css">
+  <link rel="stylesheet" href="/vendor/fonts/figtree/index.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body data-page="reports" data-roles="admin,faculty">
+<div id="shell"></div>
+<main id="page" class="page" hidden>
+  <div class="page-head">
+    <div><h1 class="page-title">Reports</h1><p class="page-sub">Attendance percentages, daily sheets and per-student history.</p></div>
+    <a class="btn btn-ghost" id="csvBtn" href="#"><i class="bi bi-download me-2"></i>Export CSV</a>
+  </div>
+  <ul class="nav nav-pills mb-3" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tabSummary" type="button">Attendance percentage</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tabDaily" type="button">Daily sheet</button></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="tabSummary">
+      <div class="panel panel-pad mb-3"><div class="row g-3 align-items-end">
+        <div class="col-md-3"><label class="form-label" for="fClass">Class</label><select class="form-select" id="fClass"></select></div>
+        <div class="col-6 col-md-2"><label class="form-label" for="fFrom">From</label><input class="form-control" type="date" id="fFrom"></div>
+        <div class="col-6 col-md-2"><label class="form-label" for="fTo">To</label><input class="form-control" type="date" id="fTo"></div>
+        <div class="col-md-3"><label class="form-label" for="fQ">Search student</label><input class="form-control" id="fQ" placeholder="Name, roll or student ID" autocomplete="off"></div>
+        <div class="col-md-2 d-flex gap-2"><button class="btn btn-primary flex-fill" id="applyBtn">Apply</button><button class="btn btn-ghost" id="resetBtn" title="Clear filters" aria-label="Clear filters"><i class="bi bi-x-lg"></i></button></div>
+      </div></div>
+      <div class="row g-3 mb-3" id="sumStats"></div>
+      <div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Roll</th><th>Student</th><th>Class</th><th class="text-end">Present</th><th class="text-end">Absent</th><th>Attendance</th><th></th></tr></thead><tbody id="sumBody"></tbody></table></div></div>
+    </div>
+    <div class="tab-pane fade" id="tabDaily">
+      <div class="panel panel-pad mb-3"><div class="row g-3 align-items-end">
+        <div class="col-md-5"><label class="form-label" for="dClass">Class</label><select class="form-select" id="dClass"></select></div>
+        <div class="col-md-3"><label class="form-label" for="dDate">Date</label><input class="form-control" type="date" id="dDate"></div>
+        <div class="col-md-4"><button class="btn btn-primary" id="dBtn">Show sheet</button></div>
+      </div></div>
+      <div class="d-flex gap-2 flex-wrap mb-3" id="dCounts"></div>
+      <div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Roll</th><th>Student</th><th>Status</th><th>Parent</th><th>Parent alert</th></tr></thead><tbody id="dBody"></tbody></table></div></div>
+    </div>
+  </div>
+</main>
+<div class="modal fade" id="histModal" tabindex="-1" aria-labelledby="histTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content">
+  <div class="modal-header"><h2 class="modal-title h5" id="histTitle">Student history</h2><button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body" id="histBody"></div></div></div></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/shell.js"></script>
+<script src="/js/reports.js"></script>
+</body>
+</html>

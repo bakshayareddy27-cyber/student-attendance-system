@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in | Rollcall</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%2310231f'/%3E%3Cpath d='M8 7v20M14 7v20M20 7v20M26 7v20' stroke='%23f2c230' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/vendor/fonts/bricolage/index.css">
+  <link rel="stylesheet" href="/vendor/fonts/figtree/index.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<div class="login">
+  <section class="login-art">
+    <a class="brand p-0" href="/login.html">
+      <svg class="tally" viewBox="0 0 34 34" fill="none" stroke="#f2c230" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6v22M13 6v22M20 6v22M27 6v22"/><path d="M2.5 24.5L30.5 9.5" stroke="#ffffff"/></svg>
+      <div><div class="brand-name">Rollcall</div><div class="brand-sub" id="collegeName">Student attendance system</div></div>
+    </a>
+    <div>
+      <h1>Take the roll. Parents hear the same day.</h1>
+      <p class="lead">Mark who is present, and every absence reaches a parent's inbox automatically, once, and only after the record is saved.</p>
+    </div>
+    <div class="register" aria-hidden="true">
+      <div class="r"><b>21</b><span>Ananya Sharma</span><span class="chip chip-ok"><i class="bi bi-check-lg"></i>Present</span></div>
+      <div class="r"><b>22</b><span>Vikram Reddy</span><span class="chip chip-ok"><i class="bi bi-check-lg"></i>Present</span></div>
+      <div class="r" id="flipRow"><b>23</b><span>Rahul Kumar</span><span class="chip chip-ok" id="flipChip"><i class="bi bi-check-lg"></i>Present</span><div class="alert-tag"><i class="bi bi-envelope-check me-1"></i>Parent alerted by email</div></div>
+      <div class="r"><b>24</b><span>Priya Nair</span><span class="chip chip-ok"><i class="bi bi-check-lg"></i>Present</span></div>
+    </div>
+  </section>
+
+  <section class="login-form-wrap">
+    <form class="login-form" id="loginForm" novalidate>
+      <h2>Welcome back</h2>
+      <p class="muted mb-4">Sign in with your college account to continue.</p>
+      <div class="alert alert-danger py-2 d-none" id="loginError" role="alert"></div>
+      <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-control" id="email" name="email" type="email" autocomplete="username" required placeholder="you@college.edu">
+      </div>
+      <div class="mb-4">
+        <label class="form-label" for="password">Password</label>
+        <div class="input-group">
+          <input class="form-control" id="password" name="password" type="password" autocomplete="current-password" required>
+          <button class="btn btn-ghost" type="button" id="togglePw" aria-label="Show password"><i class="bi bi-eye"></i></button>
+        </div>
+      </div>
+      <button class="btn btn-primary w-100 py-2" type="submit" id="loginBtn">Sign in</button>
+      <div class="demo-box mt-4">
+        <div class="fw-semibold mb-1">Demo accounts</div>
+        <div><button type="button" data-fill="admin@college.edu|Admin@123">Administrator</button> &nbsp;·&nbsp;
+          <button type="button" data-fill="meera@college.edu|Faculty@123">Faculty (III-CSM-B)</button> &nbsp;·&nbsp;
+          <button type="button" data-fill="arun@college.edu|Faculty@123">Faculty (II-CSD-A)</button></div>
+      </div>
+    </form>
+  </section>
+</div>
+<script src="/js/api.js"></script>
+<script src="/js/login.js"></script>
+</body>
+</html>

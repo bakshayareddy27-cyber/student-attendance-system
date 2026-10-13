@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Students | Rollcall</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%2310231f'/%3E%3Cpath d='M8 7v20M14 7v20M20 7v20M26 7v20' stroke='%23f2c230' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/vendor/fonts/bricolage/index.css">
+  <link rel="stylesheet" href="/vendor/fonts/figtree/index.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body data-page="students" data-roles="admin">
+<div id="shell"></div>
+<main id="page" class="page" hidden>
+  <div class="page-head">
+    <div><h1 class="page-title">Students</h1><p class="page-sub">Roll numbers and the parent contact that receives absence alerts.</p></div>
+    <button class="btn btn-chalk" id="addBtn"><i class="bi bi-plus-lg me-2"></i>Add student</button>
+  </div>
+  <div class="panel panel-pad mb-3"><div class="row g-3">
+    <div class="col-md-7"><label class="form-label" for="q">Search</label><input class="form-control" id="q" placeholder="Name, roll number, student ID or parent" autocomplete="off"></div>
+    <div class="col-md-5"><label class="form-label" for="classFilter">Class</label><select class="form-select" id="classFilter"></select></div>
+  </div></div>
+  <div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Roll</th><th>Student</th><th>Class</th><th>Parent</th><th class="text-end">Actions</th></tr></thead><tbody id="body"></tbody></table></div>
+    <div class="d-flex justify-content-between align-items-center p-3 border-top" id="pager"></div></div>
+</main>
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><form class="modal-content" id="form" novalidate>
+  <div class="modal-header"><h2 class="modal-title h5" id="formTitle">Add student</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body"><div class="row g-3">
+    <div class="col-md-6"><label class="form-label" for="f-name">Student name</label><input class="form-control" id="f-name" name="name" required></div>
+    <div class="col-md-3"><label class="form-label" for="f-studentId">Student ID</label><input class="form-control" id="f-studentId" name="studentId" required></div>
+    <div class="col-md-3"><label class="form-label" for="f-rollNumber">Roll number</label><input class="form-control" id="f-rollNumber" name="rollNumber" required></div>
+    <div class="col-md-6"><label class="form-label" for="f-classId">Class</label><select class="form-select" id="f-classId" name="classId" required></select></div>
+    <div class="col-md-6"><label class="form-label" for="f-parentName">Parent name</label><input class="form-control" id="f-parentName" name="parentName" required></div>
+    <div class="col-md-7"><label class="form-label" for="f-parentEmail">Parent email</label><input class="form-control" type="email" id="f-parentEmail" name="parentEmail" required><div class="form-text">Absence alerts are sent here.</div></div>
+    <div class="col-md-5"><label class="form-label" for="f-parentPhone">Parent phone</label><input class="form-control" id="f-parentPhone" name="parentPhone" placeholder="+91 98480 00000"></div>
+  </div></div>
+  <div class="modal-footer"><button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="submit" id="saveBtn">Save student</button></div>
+</form></div></div>
+<div class="modal fade" id="delModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+  <div class="modal-header"><h2 class="modal-title h5">Delete student?</h2><button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body" id="delText"></div>
+  <div class="modal-footer"><button class="btn btn-ghost" data-bs-dismiss="modal">Keep student</button><button class="btn btn-danger" id="delBtn">Delete student</button></div></div></div></div>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/shell.js"></script>
+<script src="/js/students.js"></script>
+</body>
+</html>
